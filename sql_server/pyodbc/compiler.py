@@ -291,7 +291,7 @@ class SQLCompiler(compiler.SQLCompiler):
                     result.append('HAVING %s' % having)
                     params.extend(h_params)
 
-            if self.query.explain_query:
+            if hasattr(self, 'query.explain_query'):
                 result.insert(0, self.connection.ops.explain_query_prefix(
                     self.query.explain_format,
                     **self.query.explain_options
